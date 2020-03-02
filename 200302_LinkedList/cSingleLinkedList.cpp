@@ -52,6 +52,6 @@ void cSingleLinkedList::Reverse()
 {
 	if (head)
 	{
-		head->Reverse();
+		head->Reverse(head);
 	}
 }

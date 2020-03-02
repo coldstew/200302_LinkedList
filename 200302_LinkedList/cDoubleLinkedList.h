@@ -1,19 +1,19 @@
 #pragma once
+
+struct Node
+{
+	int data;
+
+	Node* prev;
+	Node* next;
+};
+
 class cDoubleLinkedList
 {
 public:
 	cDoubleLinkedList();
 	~cDoubleLinkedList();
-
-	struct Node
-	{
-		int data;
-
-		Node* prev;
-		Node* next;
-	};
 	
-
 	void Insert(int n);
 	void Delete(int n);
 	Node* Find(int n);
@@ -23,7 +23,5 @@ private:
 
 	Node* head;
 	Node* tail;
-
-
 };
 
