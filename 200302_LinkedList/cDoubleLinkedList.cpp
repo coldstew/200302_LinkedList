@@ -3,8 +3,16 @@
 
 
 cDoubleLinkedList::cDoubleLinkedList()
-	:head(nullptr)
+	:head(nullptr), tail(nullptr)
 {
+	head = new Node;
+	tail = new Node;
+
+	head->next = tail;
+	head->prev = nullptr;
+
+	tail->next = nullptr;
+	tail->prev = head;
 }
 
 
@@ -16,67 +24,70 @@ void cDoubleLinkedList::Insert(int n)
 {
 	Node* newNode = new Node;
 	newNode->data = n;
-	newNode->prev = nullptr;
-	newNode->next = nullptr;
+	newNode->prev = tail->prev;
+	newNode->next = tail;
 
-	if (head)
-	{
-		/*if ( head == tail )
-		{
-			head->prev = nullptr;
-			head->next = newNode;
-			newNode->prev = head;
-			newNode->next = nullptr;
-			tail = newNode;
-		}
-		else if ( head != tail )
-		{
-			head->prev = nullptr;
-			head->next = tail;
-			newNode->prev = tail;
-			newNode->next = nullptr;
-			tail = newNode;
-		}*/
-		newNode->prev = tail;
-		tail->next = newNode;
-		tail = newNode;
-	}
-	else
-	{
-		head = newNode;
-		tail = newNode;
+	tail->prev->next = newNode;
+	tail->prev = newNode;
 
-		head->prev = nullptr;
-		head->next = nullptr;
-		
-		tail->prev = nullptr;
-		tail->next = nullptr;
-	}
+	//if (head)
+	//{
+	//	/*if ( head == tail )
+	//	{
+	//		head->prev = nullptr;
+	//		head->next = newNode;
+	//		newNode->prev = head;
+	//		newNode->next = nullptr;
+	//		tail = newNode;
+	//	}
+	//	else if ( head != tail )
+	//	{
+	//		head->prev = nullptr;
+	//		head->next = tail;
+	//		newNode->prev = tail;
+	//		newNode->next = nullptr;
+	//		tail = newNode;
+	//	}*/
+	//	newNode->prev = tail;
+	//	tail->next = newNode;
+	//	tail = newNode;
+	//}
+	//else
+	//{
+	//	head = newNode;
+	//	tail = newNode;
+	//	head->prev = nullptr;
+	//	head->next = nullptr;
+	//	
+	//	tail->prev = nullptr;
+	//	tail->next = nullptr;
+	//}
 }
 
 void cDoubleLinkedList::Delete(int n)
 {
-	if (head->data == n)
-	{
-		head = head->next;
-		delete this;
-	}
-	else if (head->next)
-	{
-		Delete(n);
+	Node* findNode = Find(n);
+
+	if (findNode)
+	{		
+		findNode->prev->next = findNode->next;
+		findNode->next->prev = findNode->prev;
+		delete findNode;
 	}
 }
 
 Node * cDoubleLinkedList::Find(int n)
 {
-	if (head->data == n)
+	Node* curr = head->next;
+	while (curr != tail)
 	{
-		return head;
+		if (curr->data == n)
+		{
+			return curr;
+		}
+		curr = curr->next;
 	}
-	else
-	{
-		return Find(n);
-	}
+	return nullptr;
 }
 
 void cDoubleLinkedList::Print()
