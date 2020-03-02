@@ -52,14 +52,16 @@ void cNode::Print()
 
 void cNode::Reverse(cNode * prev)
 {
-	if (GetTail() == next)
+	cNode* temp = new cNode;
+	temp->next
+	if (GetTail() != prev)
 	{
-
+			 
 	}
 }
 
 cNode * cNode::GetTail()
 {
 	if (next)	{ return next->GetTail(); }
-	return this;
+	else { return this; }
 }

@@ -25,9 +25,9 @@ int main()
 	list2.Insert(20);
 	list2.Insert(25);
 	
-	list2.Delete(35);
+	//list2.Delete(35);
 	
-	list2.Insert(25);
+	list2.Insert(5);
 
 	list2.Print();
 }
