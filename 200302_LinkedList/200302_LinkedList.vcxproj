@@ -151,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="cDoubleLinkedList.h" />
     <ClInclude Include="cNode.h" />
     <ClInclude Include="cSingleLinkedList.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="200302_LinkedList.cpp" />
+    <ClCompile Include="cDoubleLinkedList.cpp" />
     <ClCompile Include="cNode.cpp" />
     <ClCompile Include="cSingleLinkedList.cpp" />
     <ClCompile Include="pch.cpp">
