@@ -26,6 +26,15 @@ void cNode::Insert(cNode * node)
 
 void cNode::Delete(int n, cNode ** ppThis)
 {
+	if (data == n)
+	{
+		(*ppThis) = next;
+		delete this;
+	}
+	else if (next)
+	{
+		next->Delete(n, &next);
+	}
 }
 
 void cNode::Print()
@@ -39,4 +48,18 @@ void cNode::Print()
 	{
 		return;
 	}
+}
+
+void cNode::Reverse(cNode * prev)
+{
+	if (GetTail() == next)
+	{
+
+	}
+}
+
+cNode * cNode::GetTail()
+{
+	if (next)	{ return next->GetTail(); }
+	return this;
 }

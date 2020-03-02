@@ -47,3 +47,11 @@ void cSingleLinkedList::Print()
 	else return;
 
 }
+
+void cSingleLinkedList::Reverse()
+{
+	if (head)
+	{
+		head->Reverse();
+	}
+}
